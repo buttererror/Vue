@@ -5,44 +5,49 @@
    <meta name="viewport"
          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+   <script src="https://unpkg.com/vue"></script>
+
    <title>Vue</title>
 </head>
 <body>
 
 <div id="app">
-      {{ count }} is
-   <span v-if="count < 5">
-      too low
-   </span>
-   <span v-else-if="count >= 5 && count <= 10">
-      just right
-   </span>
-   <span v-else>
-      too high
-   </span>
+
+   <div v-if="!loaded">
+      loading
+   </div>
+
+   <div v-for="post in posts" v-else>
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.body}}</p>
+   </div>
+
+
 
 
 </div>
 
 
-
-<script src="https://unpkg.com/vue"></script>
-
 <script>
    let app = new Vue({
       el: "#app",
       data: {
-         count: 1,
-         message: "Hello Vue!"
+         loaded: false,
+         posts: []
       },
       mounted() {
-         // setTimeout(() => {
-         //    this.loaded = true;
-         // }, 3000);
-         setInterval(() => {
-            this.count = Math.floor(Math.random() * 21);
+         setTimeout(() => {
+            this.loaded = true;
+            this.posts = [
+               {id: 1, title: "Yuck, scurvy ppear and you horror!", body: "will be visualized daily."},
+               {id: 2, title: "ppear and you Yuck, scurvy horror!", body: "Appear and you will be visualized daily."},
+               {id: 3, title: "Yuck, scurvy horror!", body: "Appear and you  Appear and you will be visualized daily."}
+            ]
          }, 1000);
+
       }
+
    });
 
 
