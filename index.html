@@ -14,14 +14,9 @@
 
 <div id="app">
 
-   <!--<div v-for="post, index in posts">-->
-      <!--<h1>{{ post.title }} (#{{index + 1}})</h1>-->
-      <!--<p>{{ post.body}}</p>-->
-      <!--<div v-if="index === posts.length - 1">latest</div>-->
-   <!--</div>-->
-
-   <div v-for="value, property in user">{{property}}: {{value}}</div>
-
+   <ul>
+      <li v-for="x in 10">{{x}}</li>
+   </ul>
 
 
 </div>
@@ -29,18 +24,7 @@
 
 <script>
    let app = new Vue({
-      el: "#app",
-      data: {
-         // posts: [
-         //    {id: 1, title: "Yuck, scurvy ppear and you horror!", body: "will be visualized daily."},
-         //    {id: 2, title: "ppear and you Yuck, scurvy horror!", body: "Appear and you will be visualized daily."},
-         //    {id: 3, title: "Yuck, scurvy horror!", body: "Appear and you  Appear and you will be visualized daily."}
-         // ]
-         user: {
-            userName: "Mahmoud",
-            name: "Mahmoud-Ahmed"
-         }
-      }
+      el: "#app"
 
    });
 
