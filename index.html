@@ -14,9 +14,8 @@
 
 <div id="app">
 
-   <ul>
-      <li v-for="x in 10">{{x}}</li>
-   </ul>
+   <a href="" @click.prevent="click">click</a>
+   <template v-if="clicked">clicked</template>
 
 
 </div>
@@ -24,7 +23,15 @@
 
 <script>
    let app = new Vue({
-      el: "#app"
+      el: "#app",
+      data: {
+         clicked: false
+      },
+      methods: {
+         click() {
+            this.clicked = true;
+         }
+      }
 
    });
 
