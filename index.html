@@ -14,21 +14,7 @@
 
 <div id="app">
 
-   <!--Price: <input type="text" v-model.number="price">-->
-   <!--{{ price + shipping }}-->
-
-   <form @submit.prevent="submit">
-
-      <textarea v-model.lazy="note" cols="30" rows="10"></textarea>
-
-      <!--<P>{{ tweet.length }} out of {{ max }} used.</P>-->
-
-      <!--<P v-if="tweet.length > max">Too many characters</P>-->
-
-      <!--<button>submit</button>-->
-      {{note}}
-
-   </form>
+   <p :title="`${replies} new replies`">hover over me</p>
 
 </div>
 
@@ -37,18 +23,8 @@
    let app = new Vue({
       el: "#app",
       data: {
-         // price: null,
-         // shipping: 5.5
-         // tweet: '',
-         // max: 140,
-         note: ''
-      },
-      methods: {
-         // submit() {
-         //    console.log("test");
-         // }
+         replies: 5
       }
-
    });
 
 
