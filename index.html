@@ -15,8 +15,23 @@
 <div id="app">
 
    <form action="#" @submit.prevent="submit">
+      <div>
+         <label for="name">Name</label>
+         <input type="text" id="name" v-model="form.name">
+      </div>
 
-      <button>submit</button>
+      <div>
+         <label for="email">Email</label>
+         <input type="text" id="email" v-model="form.email">
+      </div>
+
+      <div>
+         <label for="pass">Password</label>
+         <input type="password" id="pass" v-model="form.password">
+      </div>
+
+
+      <button>register</button>
 
    </form>
 
@@ -27,9 +42,16 @@
 <script>
    let app = new Vue({
       el: "#app",
+      data: {
+         form: {
+            name: null,
+            email: null,
+            password: null
+         }
+      },
       methods: {
          submit() {
-            alert("submitted");
+            console.log(this.form);
          }
       }
 
