@@ -15,23 +15,13 @@
 <div id="app">
 
    <form action="#" @submit.prevent="submit">
-      <div>
-         <label for="name">Name</label>
-         <input type="text" id="name" v-model="form.name">
-      </div>
 
-      <div>
-         <label for="email">Email</label>
-         <input type="text" id="email" v-model="form.email">
-      </div>
+      <textarea id="feedback" cols="30" rows="5" v-model="feedback">
+      </textarea>
 
-      <div>
-         <label for="pass">Password</label>
-         <input type="password" id="pass" v-model="form.password">
-      </div>
+      <button>submit</button>
 
-
-      <button>register</button>
+      <div style="white-space: pre-line;">{{feedback}}</div>
 
    </form>
 
@@ -43,15 +33,10 @@
    let app = new Vue({
       el: "#app",
       data: {
-         form: {
-            name: null,
-            email: null,
-            password: null
-         }
+         feedback: null
       },
       methods: {
          submit() {
-            console.log(this.form);
          }
       }
 
