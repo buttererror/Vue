@@ -14,15 +14,21 @@
 
 <div id="app">
 
-   <form @submit.prevent="submit" v-if="countries.length">
-      <select v-model="country">
-         <option value="">Please choose</option>
-         <option :value="country.code" v-for="country in countries">{{country.name}}</option>
-      </select>
-      <button>submit</button>
+   <!--Price: <input type="text" v-model.number="price">-->
+   <!--{{ price + shipping }}-->
+
+   <form @submit.prevent="submit">
+
+      <textarea v-model.lazy="note" cols="30" rows="10"></textarea>
+
+      <!--<P>{{ tweet.length }} out of {{ max }} used.</P>-->
+
+      <!--<P v-if="tweet.length > max">Too many characters</P>-->
+
+      <!--<button>submit</button>-->
+      {{note}}
+
    </form>
-
-
 
 </div>
 
@@ -31,24 +37,16 @@
    let app = new Vue({
       el: "#app",
       data: {
-         country: "",
-         countries: []
-
-      },
-      mounted() {
-         setTimeout(() => {
-            this.countries = [
-               {code: "EG", name: "Egypt"},
-               {code: "CH", name: "China"},
-               {code: "US", name: "United states"}
-            ];
-         }, 1000);
+         // price: null,
+         // shipping: 5.5
+         // tweet: '',
+         // max: 140,
+         note: ''
       },
       methods: {
-         submit() {
-            console.log(this.country);
-         }
-
+         // submit() {
+         //    console.log("test");
+         // }
       }
 
    });
