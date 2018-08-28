@@ -14,8 +14,11 @@
 
 <div id="app">
 
-   <a href="" @click.prevent="click">click</a>
-   <template v-if="clicked">clicked</template>
+   <form action="#" @submit.prevent="submit">
+
+      <button>submit</button>
+
+   </form>
 
 
 </div>
@@ -24,12 +27,9 @@
 <script>
    let app = new Vue({
       el: "#app",
-      data: {
-         clicked: false
-      },
       methods: {
-         click() {
-            this.clicked = true;
+         submit() {
+            alert("submitted");
          }
       }
 
