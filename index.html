@@ -14,15 +14,32 @@
 
 <div id="app">
 
+   <!--<input type="checkbox" v-model="autoplay">-->
+
+   <!--this is {{autoplay === true ? "enabled" : "disabled"}}-->
+   <!--<form action="#" @submit.prevent="submit">-->
+      <!--<div>-->
+         <!--<input type="checkbox" value="bananas" v-model="choices"> Bananas-->
+
+      <!--</div>-->
+
+      <!--<div>-->
+         <!--<input type="checkbox" value="soyamilk" v-model="choices"> Soya milk-->
+
+      <!--</div>-->
+      <!--<div>-->
+         <!--<input type="checkbox" value="peanutbutter" v-model="choices"> Peanut butter-->
+
+      <!--</div>-->
+
+      <!--<button>submit</button>-->
+   <!--</form>-->
+
    <form action="#" @submit.prevent="submit">
 
-      <textarea id="feedback" cols="30" rows="5" v-model="feedback">
-      </textarea>
-
+      <input type="radio" value="cats" v-model="choice"> Cats
+      <input type="radio" value="dogs" v-model="choice"> Dogs
       <button>submit</button>
-
-      <div style="white-space: pre-line;">{{feedback}}</div>
-
    </form>
 
 
@@ -33,10 +50,14 @@
    let app = new Vue({
       el: "#app",
       data: {
-         feedback: null
+         // autoplay: true
+         // choices: []
+         choice: null
+
       },
       methods: {
          submit() {
+            console.log(this.choice);
          }
       }
 
