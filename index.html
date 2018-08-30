@@ -9,12 +9,23 @@
    <script src="https://unpkg.com/vue"></script>
 
    <title>Vue</title>
+
+   <style>
+
+      .read{
+         opacity: .5;
+      }
+
+   </style>
 </head>
 <body>
 
 <div id="app">
 
-   <p :title="`${replies} new replies`">hover over me</p>
+   <div class="post" v-for="post in posts" :class="{ 'read': post.read }">
+      {{ post.title }}
+      <a v-if="!post.read" href="#" @click.prevent="markRead(post)">Mark read</a>
+   </div>
 
 </div>
 
@@ -23,8 +34,18 @@
    let app = new Vue({
       el: "#app",
       data: {
-         replies: 5
+         posts: [
+            {id: 1, title: "Post one", read: false},
+            {id: 2, title: "Post two", read: false}
+         ]
+      },
+      methods: {
+         markRead(post) {
+            post.read = true;
+         }
       }
+
+
    });
 
 
