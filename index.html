@@ -12,8 +12,12 @@
 
    <style>
 
-      .read{
-         opacity: .5;
+      .warning {
+         color: orange;
+      }
+
+      .danger {
+         color: red;
       }
 
    </style>
@@ -22,10 +26,10 @@
 
 <div id="app">
 
-   <div class="post" v-for="post in posts" :class="{ 'read': post.read }">
-      {{ post.title }}
-      <a v-if="!post.read" href="#" @click.prevent="markRead(post)">Mark read</a>
-   </div>
+   <textarea cols="30" rows="10" v-model="tweet" :class="tweetClass"></textarea>
+
+   {{ tweet }}
+   <div>{{ tweet.length }}</div>
 
 </div>
 
@@ -34,17 +38,33 @@
    let app = new Vue({
       el: "#app",
       data: {
-         posts: [
-            {id: 1, title: "Post one", read: false},
-            {id: 2, title: "Post two", read: false}
-         ]
+         tweet: '',
+         // tweetClass: {
+         //    warning: false,
+         //    danger: false
+         // }
       },
-      methods: {
-         markRead(post) {
-            post.read = true;
+      // methods: {
+      //    check () {
+      //       this.tweetClass.warning = false;
+      //       this.tweetClass.danger = false;
+      //       if(this.tweet.length > 140){
+      //          this.tweetClass.warning = false;
+      //          this.tweetClass.danger = true;
+      //       }else if(this.tweet.length > 120){
+      //          this.tweetClass.warning = true;
+      //          this.tweetClass.danger = false;
+      //       }
+      //    }
+      // }
+      computed: {
+         tweetClass () {
+            return {
+               warning: this.tweet.length > 120 && this.tweet.length <= 140,
+               danger: this.tweet.length > 140
+            }
          }
       }
-
 
    });
 
