@@ -12,12 +12,15 @@
 
    <style>
 
-      .warning {
-         color: orange;
+      .progress {
+         background-color: lightgrey;
+         height: 20px;
       }
 
-      .danger {
-         color: red;
+      .progress__bar {
+         background-color: #42b983;
+         height: 20px;
+         transition: width 100ms ease-in;
       }
 
    </style>
@@ -26,10 +29,12 @@
 
 <div id="app">
 
-   <textarea cols="30" rows="10" v-model="tweet" :class="tweetClass"></textarea>
+   <div class="progress">
+      <div class="progress__bar" :style="{ width: progress + '%' }">
+         <span v-if="showProgressLabel">{{ progress }}%</span>
+      </div>
 
-   {{ tweet }}
-   <div>{{ tweet.length }}</div>
+   </div>
 
 </div>
 
@@ -38,33 +43,22 @@
    let app = new Vue({
       el: "#app",
       data: {
-         tweet: '',
-         // tweetClass: {
-         //    warning: false,
-         //    danger: false
-         // }
+         progress: 0
       },
-      // methods: {
-      //    check () {
-      //       this.tweetClass.warning = false;
-      //       this.tweetClass.danger = false;
-      //       if(this.tweet.length > 140){
-      //          this.tweetClass.warning = false;
-      //          this.tweetClass.danger = true;
-      //       }else if(this.tweet.length > 120){
-      //          this.tweetClass.warning = true;
-      //          this.tweetClass.danger = false;
-      //       }
-      //    }
-      // }
       computed: {
-         tweetClass () {
-            return {
-               warning: this.tweet.length > 120 && this.tweet.length <= 140,
-               danger: this.tweet.length > 140
-            }
+         showProgressLabel() {
+            return this.progress > 5
          }
+      },
+      mounted() {
+         let interval = setInterval(() => {
+            this.progress++;
+            if(this.progress === 100){
+               clearInterval(interval);
+            }
+         }, 50);
       }
+
 
    });
 
