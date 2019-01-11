@@ -29,12 +29,7 @@
 
 <div id="app">
 
-   <div class="progress">
-      <div class="progress__bar" :style="{ width: progress + '%' }">
-         <span v-if="showProgressLabel">{{ progress }}%</span>
-      </div>
 
-   </div>
 
 </div>
 
@@ -43,20 +38,7 @@
    let app = new Vue({
       el: "#app",
       data: {
-         progress: 0
-      },
-      computed: {
-         showProgressLabel() {
-            return this.progress > 5
-         }
-      },
-      mounted() {
-         let interval = setInterval(() => {
-            this.progress++;
-            if(this.progress === 100){
-               clearInterval(interval);
-            }
-         }, 50);
+
       }
 
 
